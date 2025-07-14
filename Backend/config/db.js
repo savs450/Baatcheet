@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-// const mongoAtlas = 'mongodb+srv://savs2728:savita123@cluster0.ejjrn9f.mongodb.net/'
+
 
 const connectDB = async () =>{
     const local_DB_string= 'mongodb://localhost:27017/'
