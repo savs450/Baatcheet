@@ -4,7 +4,7 @@ const generateToken = require("../config/generateToken");
 
 
 const registerUser = asyncHandler(async (req, res) => {
-  console.log("Response recieved..")
+  // console.log("Response recieved..")
   const { name, email, password, pic } = req.body;
 
   if (!name || !email || !password) {
@@ -36,6 +36,7 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 });
 const allUsers = asyncHandler(async(req, res)=>{
+  console.log('allUsers hit ...')
   const keyword = req.query.search ?{
     $or:[
       {name:{$regex: req.query.search, $options:"i"}},
@@ -43,7 +44,7 @@ const allUsers = asyncHandler(async(req, res)=>{
     ]
   }:{}
   // console.log("keyword",keyword)
-  const users = await User.find(keyword)
+  const users = await User.find(keyword).find({_id:{$ne : req.user._id}});
   res.send(users)
 
 })
