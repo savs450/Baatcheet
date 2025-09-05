@@ -4,6 +4,7 @@ const cors = require('cors');
 const connectDB = require('./config/db');
 const UserRoutes = require('./Routes/UserRoutes');
 const ChatRoutes = require('./Routes/ChatRoutes');
+const MessageRoutes = require('./Routes/MessageRoutes')
 const { notFound, errorHandler } = require('./middleware/errorMiddleware');
 
 connectDB();
@@ -18,6 +19,8 @@ app.get('/', (req, res) => {
 console.log("JWT_SECRET:", process.env.JWT_SECRET);
 app.use('/api/user', UserRoutes);
 app.use('/api/chat', ChatRoutes);
+app.use('/api/message', MessageRoutes);
+
 
 app.use(notFound);
 app.use(errorHandler);

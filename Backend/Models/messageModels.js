@@ -1,7 +1,5 @@
-import mongoose from "mongoose";
-import { Schema } from "mongoose";
-
-const messageModel = new Schema(
+const mongoose = require("mongoose");
+const messageModel = new mongoose.Schema(
 {
   sender: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
   content: { type: String, trim: true },

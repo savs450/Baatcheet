@@ -36,7 +36,6 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 });
 const allUsers = asyncHandler(async(req, res)=>{
-  console.log('allUsers hit ...')
   const keyword = req.query.search ?{
     $or:[
       {name:{$regex: req.query.search, $options:"i"}},
@@ -53,7 +52,7 @@ const authUser = asyncHandler(async (req, res) => {
   let user = await User.findOne({email})
   let isPasswordMatched = await user.matchedPassword(password)
   if(user && isPasswordMatched){
-    res.json({
+   return res.json({
         _id : user._id,
         name: user.name,
         email : user.email,
@@ -61,5 +60,7 @@ const authUser = asyncHandler(async (req, res) => {
         token:generateToken(user._id)
     })
   }
+  res.status(401);
+  throw new Error("Invalid Email or Password")
 });
 module.exports = { registerUser,authUser ,allUsers};
