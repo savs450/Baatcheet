@@ -2,14 +2,15 @@ const mongoose = require('mongoose')
 
 
 const connectDB = async () =>{
-    const local_DB_string= 'mongodb://localhost:27017/Webchat-LOCAL'
+    // const local_DB_string= 'mongodb://localhost:27017/Webchat-LOCAL'
+
     try{
-        const conn = await mongoose.connect(local_DB_string,{
+        const conn = await mongoose.connect(process.env.MONGO_URI,{
             useNewUrlParser : true,
             useUnifiedTopology :true,
-            
+
         })
-    // console.log(`MongoDb connected : ${conn.connection.host}`)  //local 
+    // console.log(`MongoDb connected : ${conn.connection.host}`)  //local
     console.log(`Database name: ${conn.connection.name}`);
 
     }
