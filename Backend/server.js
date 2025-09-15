@@ -12,7 +12,7 @@ connectDB();
 const app = express();
 
 const allowedOrigins = process.env.NODE_ENV === 'production'
-  ? [process.env.CLIENT_URL]
+  ? ['*']
   : ['http://localhost:3000'];
 
 app.use(cors({ origin: allowedOrigins, credentials: true }));
@@ -45,10 +45,7 @@ const PORT =  process.env.PORT || 8000
 const server = app.listen(PORT, console.log("Server started on port 8000"));
 const io = require('socket.io')(server,{
     pingTimeout:60000,
-    cors:{origin: process.env.NODE_ENV === 'production'
-        ? [process.env.CLIENT_URL]
-        : ['http://localhost:3000']
-    }
+    cors:{ origin: allowedOrigins,}
 })
 
 io.on('connection',(socket)=>{
