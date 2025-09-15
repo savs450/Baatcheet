@@ -3,8 +3,7 @@
   "private": true,
   "scripts": {
     "install": "cd Backend && npm install && cd ../Frontend && npm install",
-    "build": "cd Frontend && npm run build",
-    "start": "cd Backend && npm start",
-    "clean-install": "rm -rf node_modules Backend/node_modules Frontend/node_modules && npm install"
+    "build": "cd Frontend && CI=false npm run build",
+    "start": "cd Backend && npm start"
   }
 }
