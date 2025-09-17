@@ -1,10 +1,9 @@
-import React,{useEffect, useState} from "react";
-import { Container, Box, Text } from "@chakra-ui/react";
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
+import {useEffect, useState} from "react";
 import Login from "../Components/authentication/Login";
 import Signup from "../Components/authentication/Signup";
 import './Homepage.css'
 import orangebackground from '../assest/orangebackground.jpg'
+import homepageLogo from '../assest/homepageLogo.svg'
 import { useHistory } from "react-router-dom";
 
 
@@ -21,6 +20,7 @@ const HomePage = () => {
   return (
     <div className="main_container">
       <div className="left">
+        <img className="homepage_logo" src ={homepageLogo} alt='homepageLogo'/>
        <img className="frontPage" src={orangebackground} alt='chatLogin'/>
       </div>
       <div className="right">
